@@ -1,0 +1,31 @@
+<%- include('../includes/header.ejs') %> 
+</head>
+<body>
+  <!-- begin::Navbar -->
+  <%- include('../includes/navigation.ejs') %>
+  <!-- emd::Navbar -->
+  
+  <% if (products.length > 0) { %>
+  <div class="container mt-5">
+    <div class="row">
+      <% products.forEach(product => { %>
+        <div class="col-3">
+          <div class="card">
+            <form action="/cart" method="post">
+              <input type="hidden" name="productId" value="<%= product.id %>">
+              <button type="submit" class="stretched-link btn"></button>
+            </form>
+            <img src="https://picsum.photos/200" class="card-img-top" alt="">
+            <div class="card-body d-flex justify-content-between">
+              <p class="product-title"><%= product.name %></p>
+              <p class="product-price">$<%= product.price %></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <% } else { %>
+    <h1>No products found!</h1>
+  <% } %>
+<%- include('../includes/footer.ejs') %>

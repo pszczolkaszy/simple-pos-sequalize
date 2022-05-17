@@ -1,0 +1,37 @@
+<%- include('../includes/header.ejs') %> 
+</head>
+<body>
+  <!-- begin::Navbar -->
+  <%- include('../includes/navigation.ejs') %>
+  <!-- emd::Navbar -->
+  
+
+  <div class="container mt-5">
+    <form action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
+      <div class="row w-50 d-flex justify-content-center">
+        <div class="col-4">
+          <label for="product-name">Product name</label>
+          <input type="text" name="name" id="product-name" placeholder="Name" value="<%= (editing) ? product.name : '' %>">
+        </div>
+        <div class="col-4">
+          <label for="product-price">Product price</label>
+          <input type="text" name="price" id="product-price" placeholder="$ Price" value="<%= (editing) ? product.price : '' %>">
+        </div>
+        <div class="col-4">
+          <label for="product-image">Product image</label>
+          <input type="text" name="image" id="product-image" placeholder="Image URL" value="<%= (editing) ? product.image : '' %>">
+        </div>
+        <div class="col d-flex justify-content-center my-5">
+          <% if (editing) { %><input type="hidden" name="productId" value="<%= product.id %>"><% } %>
+          <button class="w-25" type="submit">
+            <% if (editing) { %>
+              Edit product
+            <% } else { %>
+              Add product
+            <% } %>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+<%- include('../includes/footer.ejs') %>
