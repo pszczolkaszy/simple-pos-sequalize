@@ -16,7 +16,7 @@
           <ul>
             <% bill.products.forEach(product => { %>
             <li>
-              <%= product.name %> (<%= product.billItem.quantity %>)
+              <%= product.name %> x<%= product.billItem.quantity %> $<%= product.billItem.quantity * product.price %>
             </li>
             <% }) %>
           </ul>

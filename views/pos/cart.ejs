@@ -23,9 +23,11 @@
           <h6>Total price: $<%= totalPrice %></h6> 
           <form action="/create-bill" method="POST" class="w-100">
             <% if(products.length < 1) { %>
-              <button class="btn btn-primary w-100" type="submit" disabled>Checkout</button>
+              <button class="btn btn-primary w-50" type="submit" disabled>Cash</button>
+              <button class="btn btn-primary w-50" type="submit" disabled>Card</button>
             <% } else { %>
-              <button class="btn btn-primary w-100" type="submit">Checkout</button>
+              <button class="btn btn-primary w-50" type="submit">Cash</button>
+              <button class="btn btn-primary w-50" type="submit">Card</button>
             <% } %>
           </form>
         </div>

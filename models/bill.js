@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const moment = require('moment');
-moment.locale('pl'); 
+moment.locale('pl');
 const sequelize = require('../util/database');
 
 const Bill = sequelize.define('bill', {
@@ -15,12 +15,13 @@ const Bill = sequelize.define('bill', {
     allowNull: false,
     defaultValue: 0,
   },
+  paymentType: {
+    type: Sequelize.STRING,
+  },
   createdAt: {
     type: Sequelize.DATE,
     get() {
-      return moment(this.getDataValue('createdAt')).format(
-        'H:mm DD.MM.YYYY',
-      );
+      return moment(this.getDataValue('createdAt')).format('H:mm DD.MM.YYYY');
     },
   },
 });
