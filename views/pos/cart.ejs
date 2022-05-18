@@ -21,15 +21,25 @@
 
         <div class="checkout d-flex flex-column justify-content-center">
           <h6>Total price: $<%= totalPrice %></h6> 
-          <form action="/create-bill" method="POST" class="w-100">
-            <% if(products.length < 1) { %>
-              <button class="btn btn-primary w-50" type="submit" disabled>Cash</button>
+          <% if(products.length < 1) { %>
+            <form action="/create-bill" method="POST" class="w-100">
+              <input type="hidden" name="paymentType" value="cash">
+              <button class="btn btn-primary w-50 mb-2" type="submit" disabled>Cash</button>
+            </form>
+            <form action="/create-bill" method="POST" class="w-100">
+              <input type="hidden" name="paymentType" value="card">
               <button class="btn btn-primary w-50" type="submit" disabled>Card</button>
-            <% } else { %>
-              <button class="btn btn-primary w-50" type="submit">Cash</button>
+            </form>
+          <% } else { %>
+            <form action="/create-bill" method="POST" class="w-100">
+              <input type="hidden" name="paymentType" value="cash">
+              <button class="btn btn-primary w-50 mb-2" type="submit">Cash</button>
+            </form>
+            <form action="/create-bill" method="POST" class="w-100">
+              <input type="hidden" name="paymentType" value="card">
               <button class="btn btn-primary w-50" type="submit">Card</button>
-            <% } %>
-          </form>
+            </form>
+          <% } %>
         </div>
       </div>
     </div>

@@ -108,6 +108,7 @@ exports.getBills = (req, res, next) => {
 };
 
 exports.postCreateBill = (req, res, next) => {
+  const paymentType = req.body.paymentType;
   let fetchedCart;
   req.user
     .getCart()
@@ -120,6 +121,7 @@ exports.postCreateBill = (req, res, next) => {
         .createBill()
         .then((bill) => {
           bill.totalPrice = fetchedCart.totalPrice;
+          bill.paymentType = paymentType;
           bill.save();
           bill.addProducts(
             products.map((product) => {
